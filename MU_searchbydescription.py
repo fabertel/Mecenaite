@@ -3,8 +3,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Replace 'your-api-key' with your actual OpenAI API key
-openai.api_key = 'your-api-key'
+
 
 def find_similar_paintings(description_to_search, df, top_n=5):
     vectorizer = TfidfVectorizer()
@@ -31,7 +30,7 @@ data = {
     'painting_name': ['Mona Lisa', 'Starry Night','Starry Night clone','Starry Night clones', 'The Scream'],
     'description': ['A portrait of a woman with a mysterious smile.', 
                     'A swirling night sky over a small village.', 
-                    'A swirling day sky over a large humunguis village.', 
+                    'A swirling day sky over a large humunguis village.', chat
                     'A swirling day sky over a large humunguis city.', 
                     'An agonized figure against a blood red sky.']
 }
