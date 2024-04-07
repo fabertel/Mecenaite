@@ -1,6 +1,6 @@
 COMMIT 2024/04/07 FB
-add MU_txt_highlight per dare titol oa opera e evidenziare le keyword che poi metteremo in bold in html 
-add MU_create_Bio.py per creare biografia di artista partendo da descrizione opere 
+- add MU_txt_highlight per dare titol oa opera e evidenziare le keyword che poi metteremo in bold in html 
+- add MU_create_Bio.py per creare biografia di artista partendo da descrizione opere 
 
 COMMIT 2024/03/23 FB
 ## script MU_jpg2txt
