@@ -1,5 +1,5 @@
 COMMIT 2024/04/17 FB
-take or upload photos , preview and add to database
+- take or upload photos , preview and add to database
 
 COMMIT 2024/04/07 FB
 - add MU_txt_highlight per dare titol oa opera e evidenziare le keyword che poi metteremo in bold in html 
