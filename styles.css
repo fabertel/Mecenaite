@@ -1,0 +1,49 @@
+/* Style for heading */
+h1 {
+    font-weight: bold; /* Make text bold */
+    position: relative; /* Position relative for line positioning */
+}
+
+/* Style for line below heading */
+h1::after {
+    content: ''; /* Create pseudo-element */
+    position: absolute; /* Position absolutely */
+    bottom: 0; /* Align to bottom of heading */
+    left: 0; /* Align to left edge of heading */
+    width: 100%; /* Full width */
+    height: 2px; /* Line thickness */
+    background-color: black; /* Line color */
+}
+
+/* Style for buttons */
+button {
+    background-color: #c7e6c9; /* Pale green background */
+    color: black; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    margin: 10px; /* Margin */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #a9d9a2; /* Darker green on hover */
+}
+
+/* Style for image preview container */
+#imagePreview {
+    display: none; /* Hide by default */
+    width: 50%; /* 50% of screen width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px; /* Add padding */
+    border: 5px solid black; /* Black frame */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow */
+}
+
+/* Style for image preview */
+#previewImg {
+    width: 100%; /* 100% width of container */
+    height: auto; /* Maintain aspect ratio */
+}

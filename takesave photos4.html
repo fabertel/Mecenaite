@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Picture</title>
+</head>
+<body>
+    <h1>Upload Picture</h1>
+    
+    <!-- Button to take a new photo -->
+    <button onclick="takeNewPhoto()">Take New Photo</button>
+    
+    <!-- Button to upload from gallery -->
+    <button onclick="selectFromGallery()">Upload from Gallery</button>
+
+    <!-- Hidden file input for selecting image -->
+    <input type="file" accept="image/*" id="fileInput" style="display: none;">
+    
+    <!-- Button to upload the selected image -->
+    <button onclick="uploadPicture()" id="uploadButton" style="display: none;">Upload</button>
+
+    <!-- Image preview container -->
+    <div id="imagePreview" style="display: none;">
+        <img id="previewImg" src="#" alt="Image Preview">
+    </div>
+
+    <script>
+        // Function to handle file selection for image preview
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            const previewImg = document.getElementById('previewImg');
+            const imagePreview = document.getElementById('imagePreview');
+
+            // Check if file is an image
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                // Set up onload callback to display preview image
+                reader.onload = function(event) {
+                    previewImg.src = event.target.result;
+                    imagePreview.style.display = 'block'; // Show image preview container
+                };
+
+                // Read the selected file as a data URL
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Add event listener to file input for file selection
+        document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+
+        // Function to upload the selected image
+        function uploadPicture() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('upload2.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Picture uploaded successfully!');
+                    } else {
+                        alert('Failed to upload picture.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while uploading the picture.');
+                });
+            } else {
+                alert('Please select a picture to upload.');
+            }
+        }
+
+        // Function to take a new photo
+        function takeNewPhoto() {
+            const fileInput = document.getElementById('fileInput');
+            fileInput.setAttribute('capture', 'camera');
+            fileInput.click(); // Trigger file input click event
+        }
+
+        // Function to select from gallery
+        function selectFromGallery() {
+            const fileInput = document.getElementById('fileInput');
+            fileInput.removeAttribute('capture');
+            fileInput.click(); // Trigger file input click event
+        }
+
+        // Event listener for file input change
+        document.getElementById('fileInput').addEventListener('change', () => {
+            const fileInput = document.getElementById('fileInput');
+            const uploadButton = document.getElementById('uploadButton');
+            if (fileInput.files.length > 0) {
+                uploadButton.style.display = 'block'; // Show upload button when a file is selected
+            } else {
+                uploadButton.style.display = 'none'; // Hide upload button when no file is selected
+            }
+        });
+    </script>
+</body>
+</html>
